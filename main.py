@@ -2,16 +2,19 @@ import mysql.connector
 import tkinter as tk
 from tkinter import messagebox
 import bcrypt
+from dotenv import load_dotenv
+import os
 from InstructorInterface import InstructorInterface
+from student import studentInterface
 
-from studentInterface import studentInterface
+load_dotenv()
 
 # MySQL Database Configuration
 db_config = {
-    'host': 'localhost',
-    'user': 'root',
-    'password': 'Ioedharan@01',
-    'database': 'attendance_system'
+    'host': os.getenv('DB_HOST'),
+    'user': os.getenv('DB_USER'),
+    'password': os.getenv('DB_PASSWORD'),
+    'database': os.getenv('DB_NAME')
 }
 
 # Connect to MySQL Database

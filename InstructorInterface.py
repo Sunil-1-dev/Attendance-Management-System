@@ -4,6 +4,7 @@ from tkinter import ttk
 import mysql.connector
 from tkcalendar import Calendar
 import datetime
+import os
 
 
 class InstructorInterface:
@@ -14,10 +15,10 @@ class InstructorInterface:
 
 
         self.db_config = {
-            'host': 'localhost',
-            'user': 'root',
-            'password': 'Ioedharan@01',  # Update with your MySQL password
-            'database': 'attendance_system'
+        'host': os.getenv('DB_HOST'),
+        'user': os.getenv('DB_USER'),
+        'password': os.getenv('DB_PASSWORD'),
+        'database': os.getenv('DB_NAME')
         }
         self.conn = mysql.connector.connect(**self.db_config)
         self.cursor = self.conn.cursor()
